@@ -7,12 +7,15 @@ $n2 = (float) $_POST['n2'];
 $adicao = $n1 + $n2;
 $subtracao = $n1 - $n2;
 $multiplicacao = $n1 * $n2;
-$divisao = $n1 / $n2;
-$modulo= $n1 % $n2;
+
+$divisaoValida = $n2 != 0;
+if ($divisaoValida == true) {
+    $divisao = $n1 / $n2;
+    $modulo= $n1 % $n2;
+}
+
 $potencia= $n1 ** $n2;
 $concatenacao = $n1.$n2; //O ponto junta o texto e, não soma como número
-
-//Saida
 
 ?>
 
@@ -39,10 +42,15 @@ $concatenacao = $n1.$n2; //O ponto junta o texto e, não soma como número
             <?php echo "$n1 * $n2 = $multiplicacao"; ?>
         </h3>
         <h3>
-            <?php echo "$n1 / $n2 = $divisao"; ?>
-        </h3>
-        <h3>
-            <?php echo "$n1 % $n2 = $modulo"; ?>
+            <?php if ($divisaoValida == true) {
+                echo "$n1 / $n2 = $divisao"; 
+                echo "<br>";
+                echo "$n1 % $n2 = $modulo";
+            }
+            else {
+                echo"Não há divisão por zero.";
+            }
+            ?>
         </h3>
         <h3>
             <?php echo "$n1 ** $n2 = $potencia"; ?>
